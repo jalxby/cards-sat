@@ -1,0 +1,62 @@
+@use 'src/styles/index';
+
+.large {
+  @include index.font(var(--font-size-xxl), var(--line-height-l));
+}
+
+.h1 {
+  @include index.font(var(--font-size-xl), var(--line-height-l));
+}
+
+.h2 {
+  @include index.font(var(--font-size-l));
+}
+
+.h3 {
+  @include index.font;
+}
+
+.body1 {
+  @include index.font($fWeight: var(--font-weight-regular));
+}
+
+.subtitle1 {
+  @include index.font;
+}
+
+.body2 {
+  @include index.font(var(--font-size-s), $fWeight: var(--font-weight-regular));
+}
+
+.subtitle2 {
+  @include index.font(var(--font-size-s));
+}
+
+.caption {
+  @include index.font(var(--font-size-xs), var(--line-height-s), var(--font-weight-regular));
+}
+
+.overline {
+  @include index.font(var(--font-size-xs), var(--line-height-s));
+}
+
+.link1 {
+  @include index.font(
+    var(--font-size-s),
+    $fWeight: var(--font-weight-regular),
+    var(--color-info-500)
+  );
+
+  text-decoration-line: underline;
+}
+
+.link2 {
+  @include index.font(
+    var(--font-size-xs),
+    var(--line-height-s),
+    var(--font-weight-regular),
+    var(--color-info-500)
+  );
+
+  text-decoration-line: underline;
+}
