@@ -1,13 +1,10 @@
-import { LogoutIcon } from './assets'
-import { Button } from './components'
-
+import * as Checkbox from '@radix-ui/react-checkbox'
 export function App() {
   return (
     <div>
-      <Button variant={'tertiary'}>
-        <LogoutIcon />
-        Primary Button
-      </Button>
+      <Checkbox.Root>
+        <Checkbox.Indicator></Checkbox.Indicator>
+      </Checkbox.Root>
     </div>
   )
 }

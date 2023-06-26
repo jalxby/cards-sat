@@ -29,15 +29,26 @@ const meta = {
   },
 } satisfies Meta<typeof Typography>
 
-const content = (
-  <>
-    Carosserie Test Zürich
-    <br />
-    Stauffacherstrasse 31
-    <br />
-    8004 Zürich, ZH, CH
-  </>
-)
+const content =
+  'Lorem ipsum dolor sit amet, ' +
+  'consectetur adipiscing elit, ' +
+  'sed do eiusmod tempor incididunt ' +
+  'ut labore et dolore magna aliqua. ' +
+  'Ut enim ad minim veniamdsa Lorem ' +
+  'ipsum dolor sit amet, consectetur ' +
+  'adipiscing elit, sed do eiusmod ' +
+  'tempor incididunt ut labore et ' +
+  'dolore magna aliqua. Ut enim ad ' +
+  'minim veniamdsa Lorem ipsum dolor sit amet, ' +
+  'consectetur adipiscing elit, ' +
+  'sed do eiusmod tempor incididunt ' +
+  'ut labore et dolore magna aliqua. ' +
+  'Ut enim ad minim veniamdsa Lorem ' +
+  'ipsum dolor sit amet, consectetur ' +
+  'adipiscing elit, sed do eiusmod ' +
+  'tempor incididunt ut labore et ' +
+  'dolore magna aliqua. Ut enim ad ' +
+  'minim veniamdsa'
 
 export default meta
 type Story = StoryObj<typeof meta>
