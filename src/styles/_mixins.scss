@@ -2,12 +2,11 @@
   $fSize: var(--font-size-m),
   $lHeight: var(--line-height-m),
   $fWeight: var(--font-weight-bold),
-  $fColor: var(--color-dark-900),
   $fFamily: var(--font-family-primary)
 ) {
   font-size: $fSize;
   font-family: $fFamily;
   font-weight: $fWeight;
   line-height: $lHeight;
-  color: $fColor;
+  color: var(--color-dark-900);
 }

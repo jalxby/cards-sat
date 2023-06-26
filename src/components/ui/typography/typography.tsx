@@ -15,8 +15,10 @@ type TypographyProps<T> = {
     | 'subtitle2'
     | 'caption'
     | 'overline'
-    | 'link'
+    | 'link1'
     | 'link2'
+    | 'error1'
+    | 'error2'
   children?: ReactNode
   className?: string
 }
