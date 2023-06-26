@@ -7,6 +7,10 @@ const meta = {
   component: Typography,
   tags: ['autodocs'],
   argTypes: {
+    color: {
+      options: ['primary', 'secondary', 'error', 'inherit'],
+      control: { type: 'radio' },
+    },
     variant: {
       options: [
         'large',
@@ -136,6 +140,13 @@ export const Error1: Story = {
 export const Error2: Story = {
   args: {
     variant: 'error2',
+    children: content,
+  },
+}
+
+export const Test: Story = {
+  args: {
+    as: 'h4',
     children: content,
   },
 }

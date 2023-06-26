@@ -1,10 +1,12 @@
-import * as Checkbox from '@radix-ui/react-checkbox'
+import { Typography } from '@/components'
+
 export function App() {
   return (
     <div>
-      <Checkbox.Root>
-        <Checkbox.Indicator></Checkbox.Indicator>
-      </Checkbox.Root>
+      <Typography as={'h4'} variant={'h1'}>
+        asdadasdada
+      </Typography>
+      <Typography>asdadasdada</Typography>
     </div>
   )
 }

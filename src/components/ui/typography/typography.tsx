@@ -21,15 +21,14 @@ type TypographyProps<T> = {
     | 'error2'
   children?: ReactNode
   className?: string
+  color?: 'primary' | 'secondary' | 'error' | 'inherit'
 }
 export const Typography = <T extends ElementType = 'p'>(
   props: TypographyProps<T> & ComponentPropsWithoutRef<T>
 ) => {
-  const { variant = 'primary', fullWidth, as: Component = 'p', className, ...rest } = props
+  const { variant = 'div', as, className, color = 'inherit', ...rest } = props
 
-  return (
-    <div>
-      <Component className={`${s[variant]}`} {...rest}></Component>
-    </div>
-  )
+  const Component: string | T = !as || ['h1', 'h2', 'h3'].includes(variant) ? variant : as
+
+  return <Component className={`${s[variant]} ${s[color]}`} {...rest}></Component>
 }

@@ -1,5 +1,9 @@
 @use 'src/styles/index';
 
+* {
+  margin: 0;
+}
+
 .large {
   @include index.font(var(--font-size-xxl), var(--line-height-l));
 }

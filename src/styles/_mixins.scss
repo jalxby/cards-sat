@@ -8,6 +8,20 @@
   font-family: $fFamily;
   font-weight: $fWeight;
   line-height: $lHeight;
-  color: var(--color-dark-900);
-  white-space: pre-line;
+
+  &.inherit {
+    color: inherit;
+  }
+  &.primary {
+    color: var(--color-light-100);
+  }
+  &.secondary {
+    color: var(--color-dark-100);
+  }
+  &.disabled {
+    color: var(--color-dark-300);
+  }
+  &.error {
+    color: var(--color-danger-300);
+  }
 }
