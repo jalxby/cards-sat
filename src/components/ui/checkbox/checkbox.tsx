@@ -8,7 +8,9 @@ import { CheckedIcon } from '@/assets'
 
 type CheckboxProps = { label?: string } & Omit<ComponentPropsWithoutRef<'input'>, 'type'>
 
-export const Checkbox = ({ checked, label, disabled, ...props }: CheckboxProps) => {
+export const Checkbox = (props: CheckboxProps) => {
+  const { checked, label, disabled } = props
+
   return (
     <form>
       <div className={s.container}>
