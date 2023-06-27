@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { Button } from './'
 
-import { Typography } from '@/components'
-
 const meta = {
   title: 'Components/Button',
   component: Button,
@@ -22,7 +20,7 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    children: <Typography variant={'subtitle2'}>Primary Button</Typography>,
+    children: 'Primary Button',
     disabled: false,
   },
 }

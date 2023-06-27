@@ -17,3 +17,10 @@ export const Default: Story = {
     checked: true,
   },
 }
+export const WithLabel: Story = {
+  args: {
+    checked: true,
+    label: 'Label Test',
+    disabled: true,
+  },
+}

@@ -144,9 +144,11 @@ export const Error2: Story = {
   },
 }
 
-export const Test: Story = {
+export const InheritColor: Story = {
   args: {
-    as: 'h4',
+    variant: 'body1',
+    color: 'inherit',
     children: content,
   },
+  decorators: [Story => <div style={{ color: 'green' }}>{Story()}</div>],
 }

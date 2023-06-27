@@ -1,75 +1,92 @@
-//.checkbox {
-//  cursor: pointer;
-//
-//  position: relative;
-//
-//  width: 20px;
-//  height: 20px;
-//
-//  appearance: none;
-//  border: 2px solid var(--color-light-900);
-//  border-radius: 4px;
-//  outline: none;
-//
-//  &:checked {
-//    border-color: #f00;
-//  }
-//
-//  &:focus {
-//  }
-//
-//  &:hover::after {
-//    content: '';
-//
-//    position: absolute;
-//    z-index: -1;
-//    top: 50%;
-//    left: 50%;
-//    transform: translate(-50%, -50%);
-//
-//    display: inline-block;
-//
-//    width: 250%;
-//    height: 250%;
-//
-//    background-color: #0a6638;
-//    border-radius: 100px;
-//  }
-//}
-
-/* reset */
 button {
   all: unset;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  margin-left: 9px;
+}
+
 .CheckboxRoot {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 
-  background-color: #4c8dff;
-  border-radius: 4px;
-  box-shadow: 0 2px 10px var(--color-light-900);
-}
+  background-color: transparent;
+  border: 1px solid;
+  border-color: var(--color-light-900);
+  border-radius: 2px;
 
-.CheckboxRoot:hover {
-  background-color: var(--color-accent-300);
-}
+  &:enabled {
+    cursor: pointer;
+  }
 
-.CheckboxRoot:focus {
-  box-shadow: 0 0 0 2px black;
+  &:enabled:focus::after,
+  &:enabled:hover::after {
+    content: '';
+
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: inline-block;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 100px;
+  }
+
+  &:enabled:focus::after {
+    background-color: var(--color-dark-100);
+  }
+
+  &:enabled:hover::after {
+    background-color: var(--color-dark-500);
+  }
+
+  &:enabled:active::after {
+    background-color: var(--color-dark-100);
+  }
+
+  &:disabled {
+    cursor: initial;
+    border-color: var(--color-dark-100);
+  }
+
+  &[data-state='checked'] {
+    background-color: var(--color-dark-900);
+  }
+
+  &[data-state='checked']:disabled {
+    background-color: var(--color-light-700);
+  }
 }
 
 .CheckboxIndicator {
-  color: var(--color-info-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.Label {
+.label {
   padding-left: 15px;
-  font-size: 15px;
-  line-height: 1;
-  color: white;
+
+  font-family: Roboto, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: var(--color-light-100);
+
+  &.disabled {
+    color: var(--color-dark-100);
+  }
 }
