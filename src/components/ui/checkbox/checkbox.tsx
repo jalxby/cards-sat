@@ -16,7 +16,7 @@ export const Checkbox = (props: CheckboxProps) => {
       <div className={s.container}>
         <CheckboxRDX.Root className={s.CheckboxRoot} checked={checked} disabled={disabled}>
           <CheckboxRDX.Indicator className={s.CheckboxIndicator}>
-            <CheckedIcon color={disabled ? 'var(--color-dark-100)' : 'var(--color-light-900)'} />
+            <CheckedIcon color={disabled ? 'var(--color-dark-100)' : 'var(--color-light-100)'} />
           </CheckboxRDX.Indicator>
         </CheckboxRDX.Root>
         <label className={`${s.label} ${disabled ? s.disabled : ''}`}>{label}</label>
