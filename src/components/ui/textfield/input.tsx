@@ -5,6 +5,7 @@ import { clsx } from 'clsx'
 import s from './input.module.scss'
 
 import HideIcon from '@/assets/icons/HideIcon.tsx'
+import SearchIcon from '@/assets/icons/SearchIcon.tsx'
 import ShowIcon from '@/assets/icons/ShowIcon.tsx'
 import { Typography } from '@/components'
 
@@ -16,9 +17,13 @@ type InputProps = {
 
 export const Input = (props: InputProps) => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
-  const { title, inputType, error } = props
+  const { title, inputType, error, ...rest } = props
   const cNames = {
-    input: clsx(s.input, inputType === 'password' && s.password),
+    input: clsx(
+      s.input,
+      inputType === 'password' && s.password,
+      inputType === 'search' && s.search
+    ),
   }
 
   const showHidePassword = () => {
@@ -31,7 +36,11 @@ export const Input = (props: InputProps) => {
         {title}
       </Typography>
       <div className={s.inputContainer}>
-        <input className={cNames.input} type={inputType} />
+        <input
+          className={cNames.input}
+          type={showPassword && inputType === 'password' ? 'text' : inputType}
+          {...rest}
+        />
         {inputType === 'password' && (
           <div className={s.rightIcon} onClick={showHidePassword}>
             {showPassword ? (
@@ -41,6 +50,9 @@ export const Input = (props: InputProps) => {
             )}
           </div>
         )}
+        <div className={s.searchIcon}>
+          {inputType === 'search' && <SearchIcon color={'var(--color-dark-100)'} />}
+        </div>
       </div>
       {error && (
         <Typography variant={'caption'} color={'error'} unselectable={'on'}>
