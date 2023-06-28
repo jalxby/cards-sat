@@ -55,18 +55,18 @@
         }
       }
 
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus {
+        box-shadow: 0 0 0 30px var(--color-dark-700) inset !important;
+
+        -webkit-text-fill-color: var(--color-dark-100) !important;
+      }
+
       &:not(:focus):hover {
         background-color: var(--color-dark-700);
         border-color: var(--color-dark-100);
       }
-
-      //&:-webkit-autofill,
-      //&:-webkit-autofill:hover,
-      //&:-webkit-autofill:focus {
-      //  box-shadow: 0 0 0 30px var(--color-dark-700) inset !important;
-      //
-      //  -webkit-text-fill-color: var(--color-dark-100) !important;
-      //}
 
       &[type='search']::-webkit-search-cancel-button {
         cursor: pointer;
