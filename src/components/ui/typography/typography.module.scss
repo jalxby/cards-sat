@@ -73,3 +73,7 @@
 
   color: var(--color-danger-300);
 }
+
+.unselectable {
+  user-select: none;
+}
