@@ -38,16 +38,24 @@
       border: 1px solid var(--color-dark-300);
       border-radius: 2px;
 
+      &:disabled {
+        color: var(--color-dark-300);
+
+        &::placeholder {
+          color: var(--color-dark-300);
+        }
+      }
+
       &:focus {
         border-color: var(--color-info-700);
         outline: none;
       }
 
-      &:hover {
+      &:enabled:hover {
         background-color: var(--color-dark-700);
       }
 
-      &:active {
+      &:enabled:active {
         border-color: var(--color-light-100);
 
         &::placeholder {
@@ -63,7 +71,7 @@
         -webkit-text-fill-color: var(--color-dark-100) !important;
       }
 
-      &:not(:focus):hover {
+      &:enabled:not(:focus):hover {
         background-color: var(--color-dark-700);
         border-color: var(--color-dark-100);
       }

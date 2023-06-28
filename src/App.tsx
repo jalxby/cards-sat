@@ -1,4 +1,4 @@
-import { Button, Card, Checkbox, Input } from '@/components'
+import { Button, Checkbox, Input } from '@/components'
 
 export function App() {
   return (
@@ -7,9 +7,9 @@ export function App() {
       <Checkbox left label={'Label Test'} disabled={true} checked />
       <Checkbox left label={'Label Test'} />
       <Checkbox left label={'Label Test'} />
-      <Input title={'Name'} inputType={'text'} placeholder={'Name'} />
-      <Input title={'Password'} inputType={'password'} placeholder={'password'} />
-      <Input title={'Search'} inputType={'search'} placeholder={'search'} />
+      <Input title={'Name'} inputType={'text'} placeholder={'Name'} disabled />
+      <Input title={'Password'} inputType={'password'} placeholder={'password'} disabled />
+      <Input title={'Search'} inputType={'search'} placeholder={'search'} disabled />
     </div>
   )
 }

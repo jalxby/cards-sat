@@ -17,7 +17,7 @@ type InputProps = {
 
 export const Input = (props: InputProps) => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
-  const { title, inputType, error, ...rest } = props
+  const { title, inputType, disabled, error, ...rest } = props
   const cNames = {
     input: clsx(
       s.input,
@@ -27,7 +27,7 @@ export const Input = (props: InputProps) => {
   }
 
   const showHidePassword = () => {
-    setShowPassword(!showPassword)
+    !disabled && setShowPassword(!showPassword)
   }
 
   return (
@@ -37,21 +37,24 @@ export const Input = (props: InputProps) => {
       </Typography>
       <div className={s.inputContainer}>
         <input
+          disabled
           className={cNames.input}
           type={showPassword && inputType === 'password' ? 'text' : inputType}
           {...rest}
         />
         {inputType === 'password' && (
           <div className={s.rightIcon} onClick={showHidePassword}>
-            {showPassword ? (
-              <HideIcon color={'var(--color-light-100)'} />
+            {showPassword && !disabled ? (
+              <HideIcon color={!disabled ? 'var(--color-light-100)' : 'var(--color-dark-300)'} />
             ) : (
-              <ShowIcon color={'var(--color-light-100)'} />
+              <ShowIcon color={!disabled ? 'var(--color-light-100)' : 'var(--color-dark-300)'} />
             )}
           </div>
         )}
         <div className={s.searchIcon}>
-          {inputType === 'search' && <SearchIcon color={'var(--color-dark-100)'} />}
+          {inputType === 'search' && (
+            <SearchIcon color={!disabled ? 'var(--color-light-100)' : 'var(--color-dark-300)'} />
+          )}
         </div>
       </div>
       {error && (
