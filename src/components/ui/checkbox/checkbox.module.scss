@@ -7,11 +7,40 @@ button {
   align-items: center;
   margin-top: 6px;
   margin-bottom: 6px;
+
+  &.left {
+    margin-left: -8px;
+  }
+}
+
+.disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 100px;
+}
+
+.stateLayer {
+  @extend .disabled;
+
+  &:focus-within {
+    background-color: var(--color-dark-100);
+  }
+
+  &:hover {
+    background-color: var(--color-dark-500);
+  }
+
+  &:active {
+    background-color: var(--color-dark-100);
+  }
 }
 
 .CheckboxRoot {
-  position: relative;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,36 +55,6 @@ button {
 
   &:enabled {
     cursor: pointer;
-  }
-
-  &:enabled:focus::after,
-  &:enabled:hover::after {
-    content: '';
-
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: inline-block;
-
-    width: 36px;
-    height: 36px;
-
-    border-radius: 100px;
-  }
-
-  &:enabled:focus::after {
-    background-color: var(--color-dark-100);
-  }
-
-  &:enabled:hover::after {
-    background-color: var(--color-dark-500);
-  }
-
-  &:enabled:active::after {
-    background-color: var(--color-dark-100);
   }
 
   &:disabled {
@@ -79,14 +78,12 @@ button {
 }
 
 .label {
-  padding-left: 15px;
-
   font-family: Roboto, sans-serif;
   font-size: 0.875rem;
   line-height: 1.5rem;
   color: var(--color-light-100);
 
-  &.disabled {
+  &.disabledLabel {
     color: var(--color-dark-100);
   }
 }

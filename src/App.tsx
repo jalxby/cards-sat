@@ -5,9 +5,9 @@ export function App() {
     <div>
       <Card style={{ padding: '30px' }}>
         <Button variant={'primary'}>Test checbox</Button>
-        <Checkbox label={'Label Test'} disabled={true} />
-        <Checkbox label={'Label Test'} />
-        <Checkbox label={'Label Test'} />
+        <Checkbox left label={'Label Test'} disabled={true} />
+        <Checkbox left label={'Label Test'} />
+        <Checkbox left label={'Label Test'} />
       </Card>
     </div>
   )
