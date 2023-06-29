@@ -1,4 +1,4 @@
-import { ComponentProps, useState } from 'react'
+import { FC, useState } from 'react'
 
 import { clsx } from 'clsx'
 
@@ -13,12 +13,11 @@ type InputProps = {
   title: string
   inputType: 'text' | 'password' | 'search'
   error?: string
-} & Omit<ComponentProps<'input'>, 'type'>
+} & React.ComponentProps<'input'>
 
-export const Input = (props: InputProps) => {
-  const { title, inputType, disabled, error, ...rest } = props
-  const [showPassword, setShowPassword] = useState<boolean>(false)
-  const color = !disabled ? 'var(--color-light-100)' : 'var(--color-dark-300)'
+export const Input: FC<InputProps> = ({ title, inputType, disabled, error, ...rest }) => {
+  const [showPassword, setShowPassword] = useState(false)
+  const color = disabled ? 'var(--color-dark-300)' : 'var(--color-light-100)'
   const cNames = {
     input: clsx(
       s.input,
@@ -30,8 +29,11 @@ export const Input = (props: InputProps) => {
     search: clsx(s.searchIcon),
   }
   const type = showPassword && inputType === 'password' ? 'text' : inputType
+
   const showHidePassword = () => {
-    !disabled && setShowPassword(!showPassword)
+    if (!disabled) {
+      setShowPassword(!showPassword)
+    }
   }
 
   const rightIcons = inputType === 'password' && (
@@ -39,13 +41,20 @@ export const Input = (props: InputProps) => {
       {showPassword && !disabled ? <HideIcon color={color} /> : <ShowIcon color={color} />}
     </div>
   )
+
   const leftIcon = (
     <div className={cNames.search}>{inputType === 'search' && <SearchIcon color={color} />}</div>
   )
 
+  const errorMessage = error && (
+    <Typography variant="caption" color="error" unselectable="on">
+      {title}
+    </Typography>
+  )
+
   return (
     <div className={cNames.root}>
-      <Typography variant={'body2'} color={'secondary'} unselectable={'on'}>
+      <Typography variant="body2" color="secondary" unselectable="on">
         {title}
       </Typography>
       <div className={cNames.container}>
@@ -53,11 +62,7 @@ export const Input = (props: InputProps) => {
         {rightIcons}
         {leftIcon}
       </div>
-      {error && (
-        <Typography variant={'caption'} color={'error'} unselectable={'on'}>
-          {title}
-        </Typography>
-      )}
+      {errorMessage}
     </div>
   )
 }
