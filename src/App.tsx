@@ -1,5 +1,3 @@
 import { Header } from '@/components'
 
-export function App() {
-  return <Header isAuth={false} />
-}
+export const App = () => <Header isAuth={true} />

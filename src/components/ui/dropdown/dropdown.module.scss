@@ -1,0 +1,45 @@
+.menu {
+  will-change: transform, opacity;
+
+  padding: 5px;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 4px;
+
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.item {
+  user-select: none;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 25px;
+  padding: 0 12px;
+
+  font-size: 13px;
+  line-height: 1;
+  color: var(--color-light-100);
+
+  border-radius: 3px;
+  outline: none;
+
+  &:hover {
+    color: var(--color-accent-300);
+    background-color: var(--color-accent-900);
+  }
+}
+
+.separator {
+  height: 1px;
+  background-color: var(--color-dark-500);
+}
+
+.arrow {
+  fill: var(--color-dark-700);
+}
