@@ -6,7 +6,6 @@ import s from './typography.module.scss'
 
 type TypographyProps<T> = {
   as?: T
-
   variant?:
     | 'large'
     | 'h1'
@@ -31,10 +30,10 @@ export const Typography = <T extends ElementType = 'p'>(
 ) => {
   const {
     variant = 'div',
-    unselectable,
     as: Component = 'span',
-    className,
     color = 'inherit',
+    unselectable,
+    className,
     ...rest
   } = props
   const cName = clsx(
@@ -42,5 +41,5 @@ export const Typography = <T extends ElementType = 'p'>(
     unselectable === 'on' && s.unselectable
   )
 
-  return <Component className={cName} {...rest}></Component>
+  return <Component className={cName} {...rest} />
 }
