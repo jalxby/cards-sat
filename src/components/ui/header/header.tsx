@@ -21,7 +21,11 @@ export const Header: FC<HeaderProps> = ({ className, isAuth, ...rest }) => {
         <Link to={'/'}>
           <Logo width="156" height="36" aria-label="logo" />
         </Link>
-        {isAuth ? <Dropdown trigger={<Avatar name={'Alex'} />} /> : <Button>Sign In</Button>}
+        {isAuth ? (
+          <Dropdown trigger={<Avatar size={45} name={'Alex'} />} />
+        ) : (
+          <Button>Sign In</Button>
+        )}
       </div>
     </header>
   )

@@ -23,7 +23,6 @@ export const Dropdown: FC<DropdownProps> = ({ trigger }) => {
           <DropdownMenu.Item className={s.item}>New Tab</DropdownMenu.Item>
           <DropdownMenu.Separator className={s.separator} />
           <DropdownMenu.Item className={s.item}>New Tab</DropdownMenu.Item>
-          <DropdownMenu.Separator className={s.separator} />
           <DropdownMenu.Arrow className={s.arrow} />
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
