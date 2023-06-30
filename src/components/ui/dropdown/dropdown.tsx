@@ -4,16 +4,28 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 
 import s from './dropdown.module.scss'
+
+import { Typography, UserInfoType } from '@/components'
 type DropdownProps = {
   trigger?: ReactNode
+  user?: UserInfoType
 }
 
-export const Dropdown: FC<DropdownProps> = ({ trigger }) => {
+export const Dropdown: FC<DropdownProps> = ({ trigger, user }) => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <button className="IconButton" aria-label="Customise options">
-          {trigger ? trigger : <HamburgerMenuIcon />}
+          {trigger ? (
+            <div className={s.userInfo}>
+              <Typography variant={'subtitle1'}>
+                <span className={s.userName}>{user?.name}</span>
+              </Typography>
+              {trigger}
+            </div>
+          ) : (
+            <HamburgerMenuIcon />
+          )}
         </button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>

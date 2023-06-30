@@ -43,3 +43,14 @@
 .arrow {
   fill: var(--color-dark-700);
 }
+
+.userInfo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+
+  .userName {
+    border-bottom: 3px dashed;
+  }
+}
