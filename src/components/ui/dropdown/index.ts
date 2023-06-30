@@ -1,1 +1,1 @@
-export * from './dropdown.tsx'
+export * from './dropdown'
