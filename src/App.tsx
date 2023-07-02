@@ -1,5 +1,3 @@
-import { Header } from '@/components'
+import { LoginForm } from '@/components/auth/login-form/login-form.tsx'
 
-export const App = () => (
-  <Header isAuth={true} user={{ name: 'Alex', email: 'email', avatar: 'asdas' }} />
-)
+export const App = () => <LoginForm></LoginForm>

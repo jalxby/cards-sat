@@ -11,7 +11,7 @@ type AvatarProps = {
 }
 export const Avatar: FC<AvatarProps> = ({ src, size, name }) => {
   return (
-    <AvatarRDX.Root style={{ width: `${size}px` }} className={s.avatarRoot}>
+    <AvatarRDX.Root style={{ width: `${size}px`, height: `${size}px` }} className={s.avatarRoot}>
       <AvatarRDX.Image className={s.avatarImage} src={src} alt={`${name} avatar`} />
       <AvatarRDX.Fallback className={s.avatarFallback} delayMs={600}>
         {name?.slice(0, 2).toUpperCase()}
