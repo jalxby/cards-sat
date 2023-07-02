@@ -38,7 +38,7 @@ export const Pagination: FC<PaginationPropsType> = props => {
     pageItem: clsx(s.pageContainer),
     leftArrow: clsx(s.pageContainer, disabledLeft && s.disabled),
     rightArrow: clsx(s.pageContainer, disableRight && s.disabled),
-    dots: clsx(s.dots),
+    dots: clsx(s.pageContainer, s.dots),
   }
 
   if (currentPage === 0 || paginationRange.length < 2) {
