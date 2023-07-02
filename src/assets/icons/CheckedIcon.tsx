@@ -1,6 +1,6 @@
-import { memo, SVGProps } from 'react'
+import { forwardRef, memo, SVGProps } from 'react'
 
-const CheckedIcon = (props: SVGProps<SVGSVGElement>) => (
+const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={19}
     height={19}
@@ -16,6 +16,6 @@ const CheckedIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 )
-const Memo = memo(CheckedIcon)
+const ForwardRef = forwardRef(SvgComponent)
 
-export { Memo as CheckedIcon }
+export default memo(ForwardRef)

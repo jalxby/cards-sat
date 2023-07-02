@@ -1,6 +1,6 @@
-import { SVGProps } from 'react'
+import { forwardRef, memo, SVGProps } from 'react'
 
-export const LogoutIcon = (props: SVGProps<SVGSVGElement>) => (
+export const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={16}
     height={16}
@@ -32,3 +32,7 @@ export const LogoutIcon = (props: SVGProps<SVGSVGElement>) => (
     </defs>
   </svg>
 )
+
+const ForwardRef = forwardRef(SvgComponent)
+
+export default memo(ForwardRef)

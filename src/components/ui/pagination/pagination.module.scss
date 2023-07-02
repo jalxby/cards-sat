@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+.leftArrow,
+.rightArrow {
+  display: flex;
+  align-items: center;
+}
+
+.pageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+
+  background-color: #73a5ff;
+}

@@ -5,6 +5,7 @@ type PaginationParamsType = {
   pageSize: number
   siblingCount: number
   currentPage: number
+  DOTS: string
 }
 
 export const usePagination = ({
@@ -12,7 +13,8 @@ export const usePagination = ({
   siblingCount = 1,
   currentPage,
   pageSize,
-}: PaginationParamsType): any[] | undefined => {
+  DOTS,
+}: PaginationParamsType): (number | string)[] => {
   const range = (start: number, end: number): any[] => {
     const length = end - start + 1
 
@@ -24,7 +26,6 @@ export const usePagination = ({
   }
 
   return useMemo(() => {
-    const DOTS = '...'
     const totalPageCount = Math.ceil(totalCount / pageSize)
 
     /*
@@ -85,5 +86,7 @@ export const usePagination = ({
 
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex]
     }
+
+    return []
   }, [totalCount, pageSize, siblingCount, currentPage])
 }

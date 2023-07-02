@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 import s from './header.module.scss'
 
-import { Logo } from '@/assets/icons/Logo.tsx'
+import { Logo } from '@/assets'
 import { Avatar, Button, Dropdown } from '@/components'
 
 export type UserInfoType = {
