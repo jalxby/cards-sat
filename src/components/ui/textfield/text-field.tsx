@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 
 import { clsx } from 'clsx'
 
-import s from './input.module.scss'
+import s from './text-field.module.scss'
 
 import HideIcon from '@/assets/icons/HideIcon.tsx'
 import SearchIcon from '@/assets/icons/SearchIcon.tsx'
@@ -15,7 +15,7 @@ type InputProps = {
   error?: string
 } & React.ComponentProps<'input'>
 
-export const Input: FC<InputProps> = ({ title, inputType, disabled, error, ...rest }) => {
+export const TextField: FC<InputProps> = ({ title, inputType, disabled, error, ...rest }) => {
   const [showPassword, setShowPassword] = useState(false)
   const color = disabled ? 'var(--color-dark-300)' : 'var(--color-light-100)'
   const cNames = {
@@ -48,7 +48,7 @@ export const Input: FC<InputProps> = ({ title, inputType, disabled, error, ...re
 
   const errorMessage = error && (
     <Typography variant="caption" color="error" unselectable="on">
-      {title}
+      {error}
     </Typography>
   )
 

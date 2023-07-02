@@ -1,6 +1,17 @@
-import { usePagination } from '@/components/ui/pagination/usePagination.ts'
+import { FC } from 'react'
 
-export const Pagination = () => {
+import s from './pagination.scss'
+import { usePagination } from './usePagination'
+
+type PropsType = {
+  currentPage: number
+  totalCount: number
+  pageSize: number
+  siblingCount: number
+  className: string
+  onPageChange: (page: number) => void
+}
+const Pagination: FC<PropsType> = props => {
   const { onPageChange, totalCount, siblingCount = 1, currentPage, pageSize, className } = props
 
   const paginationRange = usePagination({
@@ -66,3 +77,5 @@ export const Pagination = () => {
     </ul>
   )
 }
+
+export default Pagination

@@ -78,8 +78,8 @@ export const usePagination = ({
       return [firstPageIndex, DOTS, ...rightRange]
     }
     /*
-                Case 4: Both left and right dots to be shown
-            */
+      Case 4: Both left and right dots to be shown
+    */
     if (shouldShowLeftDots && shouldShowRightDots) {
       let middleRange = range(leftSiblingIndex, rightSiblingIndex)
 
