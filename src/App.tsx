@@ -1,3 +1,17 @@
-import { LoginForm } from '@/components/auth/login-form/login-form.tsx'
+import { useState } from 'react'
 
-export const App = () => <LoginForm></LoginForm>
+import { Pagination } from '@/components'
+
+export const App = () => {
+  const [page, setPage] = useState(1)
+
+  return (
+    <Pagination
+      currentPage={page}
+      pageSize={2}
+      totalCount={30}
+      siblingCount={1}
+      onPageChange={setPage}
+    />
+  )
+}

@@ -4,13 +4,11 @@
   list-style-type: none;
 }
 
-.leftArrow,
-.rightArrow {
-  display: flex;
-  align-items: center;
-}
-
 .pageContainer {
+  all: unset;
+
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,5 +18,29 @@
   margin-right: 0.5rem;
   margin-left: 0.5rem;
 
-  background-color: #73a5ff;
+  border: 1px solid transparent;
+  border-radius: 0.13rem;
+
+  &:focus-visible {
+    border: 1px solid var(--color-info-900);
+  }
+
+  &:hover {
+    background-color: var(--color-dark-500);
+  }
+
+  &.disabled {
+    pointer-events: none;
+    color: var(--color-dark-100);
+  }
+
+  &.active {
+    color: var(--color-dark-900);
+    background-color: var(--color-light-100);
+  }
+}
+
+.dots {
+  pointer-events: none;
+  user-select: none;
 }

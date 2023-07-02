@@ -9,11 +9,11 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <g clipPath="url(#a)">
-      <path fill="var(--color-light-100)" d="M10 11 7 8l3-3-1-1-4 4 4 4 1-1Z" />
+      <path fill="currentColor" d="M10 11 7 8l3-3-1-1-4 4 4 4 1-1Z" />
     </g>
     <defs>
       <clipPath id="a">
-        <path fill="var(--color-light-100)" d="M0 0h16v16H0z" />
+        <path fill="currentColor" d="M0 0h16v16H0z" />
       </clipPath>
     </defs>
   </svg>

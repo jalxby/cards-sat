@@ -1,11 +1,14 @@
-import { FC } from 'react'
+import { FC, KeyboardEvent } from 'react'
+
+import { clsx } from 'clsx'
 
 import s from './pagination.module.scss'
 import { usePagination } from './usePagination'
 
 import { ChevronLeft, ChevronRight } from '@/assets/icons'
+import { Typography } from '@/components'
 
-type PropsType = {
+export type PaginationPropsType = {
   currentPage: number
   totalCount: number
   pageSize: number
@@ -13,7 +16,7 @@ type PropsType = {
   className?: string
   onPageChange: (page: number) => void
 }
-export const Pagination: FC<PropsType> = props => {
+export const Pagination: FC<PaginationPropsType> = props => {
   const { onPageChange, totalCount, siblingCount = 1, currentPage, pageSize } = props
   const DOTS = '\u2026'
   const paginationRange = usePagination({
@@ -24,55 +27,88 @@ export const Pagination: FC<PropsType> = props => {
     DOTS,
   })
 
-  // If there are less than 2 times in pagination range we
-  // shall not render the component
+  const lastPage = paginationRange[paginationRange.length - 1]
+  const disabledLeft = currentPage === 1
+  const disableRight = currentPage === lastPage
+
+  const leftTabIndex = disabledLeft ? -1 : 0
+  const rightTabIndex = disableRight ? -1 : 0
+  const cNames = {
+    container: clsx(s.container),
+    pageItem: clsx(s.pageContainer),
+    leftArrow: clsx(s.pageContainer, disabledLeft && s.disabled),
+    rightArrow: clsx(s.pageContainer, disableRight && s.disabled),
+    dots: clsx(s.dots),
+  }
+
   if (currentPage === 0 || paginationRange.length < 2) {
     return null
   }
 
   const onNext = () => {
-    onPageChange(currentPage + 1)
+    !disableRight && onPageChange(currentPage + 1)
   }
 
   const onPrevious = () => {
-    onPageChange(currentPage - 1)
+    !disabledLeft && onPageChange(currentPage - 1)
   }
+  const onKeyDownSpaceLeft = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.code === 'Space') {
+      onPrevious()
+    }
+  }
+  const onKeyDownSpaceRight = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.code === 'Space') {
+      onNext()
+    }
+  }
+  const pages = paginationRange.map((pageNumber, index) => {
+    const activePage = clsx(s.pageContainer, currentPage === pageNumber && s.active)
+    const setActivePage = () => {
+      onPageChange(+pageNumber)
+    }
+    const onKeyDownSpace = (e: KeyboardEvent<HTMLDivElement>) => {
+      if (e.code === 'Space') {
+        onPageChange(+pageNumber)
+      }
+    }
 
-  let lastPage = paginationRange[paginationRange.length - 1]
+    return pageNumber === DOTS ? (
+      <div key={index} className={cNames.dots}>
+        <Typography variant={'body2'}>{DOTS}</Typography>
+      </div>
+    ) : (
+      <div
+        tabIndex={0}
+        key={index}
+        onKeyDown={onKeyDownSpace}
+        className={activePage}
+        onClick={setActivePage}
+      >
+        <Typography variant={'body2'}>{pageNumber}</Typography>
+      </div>
+    )
+  })
 
   return (
-    <ul className={s.container}>
-      {/* Left navigation arrow */}
-      <li className={s.leftArrow} onClick={onPrevious}>
+    <div className={cNames.container}>
+      <div
+        tabIndex={leftTabIndex}
+        className={cNames.leftArrow}
+        onKeyDown={onKeyDownSpaceLeft}
+        onClick={onPrevious}
+      >
         <ChevronLeft />
-      </li>
-      {paginationRange.map(pageNumber => {
-        // If the pageItem is a DOT, render the DOTS unicode character
-        if (pageNumber === DOTS) {
-          return (
-            <div key={pageNumber} className={s.pageContainer}>
-              <li className="pagination-item dots">{DOTS}</li>
-            </div>
-          )
-        }
-
-        // Render our Page Pills
-        return (
-          <div key={pageNumber} className={s.pageContainer}>
-            <li onClick={() => onPageChange(+pageNumber)}>{pageNumber}</li>
-          </div>
-        )
-      })}
-      {/*  Right Navigation arrow */}
-      <li
-        className={s.rightArrow}
-        // className={classnames('pagination-item', {
-        //   disabled: currentPage === lastPage,
-        // })}
+      </div>
+      {pages}
+      <div
+        tabIndex={rightTabIndex}
+        className={cNames.rightArrow}
+        onKeyDown={onKeyDownSpaceRight}
         onClick={onNext}
       >
         <ChevronRight />
-      </li>
-    </ul>
+      </div>
+    </div>
   )
 }
