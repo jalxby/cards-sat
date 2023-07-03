@@ -37,7 +37,7 @@ export const Typography = <T extends ElementType = 'p'>(
     ...rest
   } = props
   const cName = clsx(
-    `${s[variant]} ${s[color]} ${className}`,
+    `${className} ${s[variant]} ${s[color]}`,
     unselectable === 'on' && s.unselectable
   )
 
